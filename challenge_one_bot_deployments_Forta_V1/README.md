@@ -2,7 +2,8 @@
 
 ## Description
 
-This bot detects specific function calls made by a known deployer address. It monitors transactions for Create Agent, Update Agent, and Disable Agent function calls.
+This bot detects specific function calls made by a known `deployer` address. It monitors transactions for '
+`Create Agent`, `Update Agent`, and `Disable Agent` function calls.
 
 ## Supported Chains
 
