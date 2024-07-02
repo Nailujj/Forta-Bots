@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        bot-directory: [bot_deployment_detection]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: |
+          cd ${{ matrix.bot-directory }}
+          npm install
+
+      - name: Build the project
+        run: |
+          cd ${{ matrix.bot-directory }}
+          npm run build
+
+      - name: Run tests
+        run: |
+          cd ${{ matrix.bot-directory }}
+          npm test
